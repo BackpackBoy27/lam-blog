@@ -18,4 +18,12 @@ router.post("/new", (req, res) => {
     });
 });
 
+router.delete("/delete/:id", (req, res) => {
+    db.Post.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+});
+
 module.exports = router;

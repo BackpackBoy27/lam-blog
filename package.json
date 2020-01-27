@@ -4,7 +4,7 @@
     "description": "1.) Group members involved - Mathew Romano, Laura Bao, Adnan Niaz",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon server.js"
+        "start": "node index.js"
     },
     "repository": {
         "type": "git",

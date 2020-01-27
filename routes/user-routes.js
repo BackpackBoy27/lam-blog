@@ -19,12 +19,12 @@ router.post("/new", (req, res) => {
 });
 
 // get author by ID
-router.get("/:id", (req, res) => {
+router.get("/find/:id", (req, res) => {
     db.User.findAll({
         where: {
             id: req.params.id
         }
-    }).then(users => res.json(users));
+    }).then(user => res.send(user));
 });
 
 module.exports = router;

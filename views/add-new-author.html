@@ -27,6 +27,8 @@
                                         class="fa fa-user"></i>&nbsp;Show Blog</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/add-new-post.html"><i
                                         class="fa fa-plus-circle"></i>&nbsp;Add New Post<Article></Article></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/manage-blog.html"><i
+                                        class="fa fa-cogs"></i>&nbsp;Manage Blog<Article></Article></a></li>
                         </ul>
                     </div>
                 </div>
@@ -73,14 +75,14 @@
                     alert('Please enter author name');
                     $('#author').css('border', "solid 2px red");
                 } else {
-                    console.log($('#author').val());
+                    // console.log($('#author').val());
                     const userData = { username: $('#author').val() }
                     $.ajax({
                         url: '/api/users/new',
                         method: 'POST',
                         data: userData
                     }).then(res => {
-                        console.log('successful registration');
+                        // console.log('successful registration');
                         window.location.href = "/blog.html"
                     });
                 }

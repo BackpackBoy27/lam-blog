@@ -27,6 +27,8 @@
                                         class="fa fa-user"></i>&nbsp;Add Author</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/add-new-post.html"><i
                                         class="fa fa-plus-circle"></i>&nbsp;Add New Post<Article></Article></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/manage-blog.html"><i
+                                        class="fa fa-cogs"></i>&nbsp;Manage Blog<Article></Article></a></li>
                         </ul>
                     </div>
                 </div>
@@ -100,22 +102,23 @@
                     // Show all Post
                     $('#displayPosts').append(`
                         <h1><strong>${post.title}</strong><br></h1>
-                        <small class="text-info"><strong>Posted by: ${post.UserId}</small>
+                        <small class="text-info"><strong>Posted by: ${findById(post.UserId, cb())}</small>
                         <p>${post.body}</p>
                     `);
                 });
             });
 
-            // get Author id
-            // function getAuthor(id) {
-            //     $.ajax({
-            //         url: `/api/users/:id`,
-            //         method: 'get',
-            //     }).then(author => {
-            //         console.log(author)
-            //         author = [] ? "Anonymous" : author
-            //     });
-            // }
+            let findById = (id, cb) => {
+                $.ajax({
+                    url: `/api/users/find/${id}`,
+                    method: 'GET'
+                }).then(res => {
+                    console.log(res);
+
+                    cb({ author: res.username })
+                });
+            }
+
         })
     </script>
 </body>

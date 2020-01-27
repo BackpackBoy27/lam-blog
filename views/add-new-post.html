@@ -26,9 +26,9 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/blog.html"><i
                                         class="fa fa-user"></i>&nbsp;Show Blog</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/add-new-author.html"><i
-                                        class="fa fa-plus-circle"></i>&nbsp;Add Author<Article></Article></a></li>
+                                        class="fa fa-plus-circle"></i>&nbsp;Add Author</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/manage-blog.html"><i
-                                        class="fa fa-cogs"></i>&nbsp;Manage Blog<Article></Article></a></li>
+                                        class="fa fa-cogs"></i>&nbsp;Manage Blog</a></li>
                         </ul>
                     </div>
                 </div>
@@ -47,10 +47,8 @@
                         <label for="name">Post Title</label>
                         <input id="title" class="form-control item" type="text" id="name">
                     </div>
-                    <div class="form-group"><label for="subject">Author</label><br>
-                        <select class="custom-select" id="authorList">
-                            <option selected></option>
-                        </select>
+                    <div class="form-group"><label for="subject">Enter Author ID</label><br>
+                        <input class="form-control item" type="text" id="userId">
                     </div>
                     <div class="form-group"><label for="message">Post Body</label>
                         <textarea class="form-control item" id="message"></textarea>
@@ -92,7 +90,20 @@
 
             $('#submit').on('click', function (e) {
                 e.preventDefault();
+                const newPost = {
+                    title: $('#title').val(),
+                    UserId: $('#userId').val(),
+                    body: $('#message').val()
+                }
 
+                $.ajax({
+                    url: '/api/posts/new',
+                    method: 'POST',
+                    data: newPost
+                }).then(res => {
+                    console.log('success')
+                    window.location.href = "./blog.html"
+                });
             })
         })
     </script>

@@ -14,7 +14,7 @@ router.post("/new", (req, res) => {
     db.User.create({
         username: req.body.username
     }).then(newUser => {
-        res.json(newUser);
+        res.send(newUser);
     });
 });
 

@@ -41,15 +41,8 @@
                     <h2>New Author</h2>
                 </div>
                 <form>
-                    <div class="form-group">
-                        <label for="name">Post Title</label>
-                        <input id="title" class="form-control item" type="text" id="name">
-                    </div>
                     <div class="form-group"><label for="subject">Author</label>
-                        <input class="form-control item" type="text" id="subject">
-                    </div>
-                    <div class="form-group"><label for="message">Post Body</label>
-                        <textarea class="form-control item" id="message"></textarea>
+                        <input id="author" class="form-control item" type="text" id="subject">
                     </div>
                     <div class="form-group">
                         <button id="submit" class="btn btn-primary btn-block btn-lg" type="submit">Submit</button>
@@ -76,7 +69,21 @@
         $(document).ready(function () {
             $('#submit').on('click', function (e) {
                 e.preventDefault();
-
+                if ($('#author').val() == "") {
+                    alert('Please enter author name');
+                    $('#author').css('border', "solid 2px red");
+                } else {
+                    console.log($('#author').val());
+                    const userData = { username: $('#author').val() }
+                    $.ajax({
+                        url: '/api/users/new',
+                        method: 'POST',
+                        data: userData
+                    }).then(res => {
+                        console.log('successful registration');
+                        window.location.href = "/blog.html"
+                    });
+                }
             })
         })
     </script>

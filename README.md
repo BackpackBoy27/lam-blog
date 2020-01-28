@@ -10,9 +10,9 @@
 
 <h2>3.) min goals for the app</h2> 
     <ul>
-        <li>User Authentication</li>
-        <li>login with fireBase</li>
-        <li>User content (Create, Update, Delete)</li>
-        <li>External APi</li>
+        <li>CMS</li>
+        <li>Users / Author with CRUD</li>
+        <li>Posts content with CRUD</li>
+        <li>Responsive</li>
     </ul>
 <h2>4.) stretch goals</h2>
